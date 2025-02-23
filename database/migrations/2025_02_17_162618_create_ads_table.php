@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->text('contacts');
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
             $table->boolean('active')->default(false);
             $table->boolean('moderated')->default(false);
             $table->foreignId('user_id')->constrained('users');
