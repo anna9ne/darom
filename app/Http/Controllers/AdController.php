@@ -12,7 +12,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        //
+        return view('ads.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class AdController extends Controller
      */
     public function create()
     {
-        //
+        return view('ads.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class AdController extends Controller
      */
     public function show(Ad $ad)
     {
-        //
+        return view('ads.show', compact('ad'));
     }
 
     /**
@@ -44,7 +44,7 @@ class AdController extends Controller
      */
     public function edit(Ad $ad)
     {
-        //
+        return view('ads.edit', compact('ad'));
     }
 
     /**
