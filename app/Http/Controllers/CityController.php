@@ -12,7 +12,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        return view('cities.index');
+        return view('dashboard.cities.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('cities.create');
+        return view('dashboard.cities.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        return view('cities.show', compact('city'));
+        return view('dashboard.cities.show', compact('city'));
     }
 
     /**
@@ -44,7 +44,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        return view('cities.edit', compact('city'));
+        return view('dashboard.cities.edit', compact('city'));
     }
 
     /**
