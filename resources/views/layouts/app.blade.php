@@ -142,8 +142,6 @@
     <div x-data="setup()" :class="{ 'dark': isDark }" style="width: 100%">
         <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white dark:bg-gray-700 text-black dark:text-white">
 
-           {{-- @include('layouts.navigation')--}}
-
             @include('layouts.header')
 
             <!-- Page Heading -->

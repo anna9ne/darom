@@ -12,7 +12,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        return view('dashboard.cities.index');
+        $cities = City::all();
+        return view('dashboard.cities.index', compact('cities'));
     }
 
     /**
@@ -28,7 +29,13 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|unique:cities',
+        ]);
+
+        City::create($data);
+
+        return redirect()->route('dashboard.cities.index');
     }
 
     /**

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdController extends Controller
 {
@@ -12,7 +14,9 @@ class AdController extends Controller
      */
     public function index()
     {
-        return view('dashboard.ads.index');
+        $ads = Ad::query()->orderBy('id', 'desc')->get();
+
+        return view('dashboard.ads.index', compact('ads'));
     }
 
     /**
@@ -20,7 +24,9 @@ class AdController extends Controller
      */
     public function create()
     {
-        return view('dashboard.ads.create');
+        $cities = \App\Models\City::query()->orderBy('name', 'asc')->get();
+
+        return view('dashboard.ads.create', compact('cities'));
     }
 
     /**
@@ -28,15 +34,28 @@ class AdController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        //dd($request->image);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ad $ad)
-    {
-        return view('dashboard.ads.show', compact('ad'));
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:ads|max:255',
+            'description' => 'required',
+            'image' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:10000',
+            'phone' => 'nullable|max:255',
+            'email' => 'nullable|max:255',
+            'city_id' => 'required',
+            'active' => 'nullable',
+        ]);
+
+        if (isset($data['image'])) {
+            $data['image'] = Storage::put('/images', $data['image']);
+        }
+        $data['moderated'] = 0;
+        $data['user_id'] = Auth::user()->id;
+
+        Ad::create($data);
+
+        return redirect()->route('dashboard.ads.index');
     }
 
     /**
