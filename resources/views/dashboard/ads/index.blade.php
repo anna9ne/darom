@@ -17,8 +17,8 @@
                             <th class="px-4 py-3">City</th>
                             <th class="px-4 py-3">Active</th>
                             <th class="px-4 py-3">Moderated</th>
-                            <th class="px-4 py-3">Edit</th>
-                            <th class="px-4 py-3">Delete</th>
+                            <th class="px-4 py-3"></th>
+                            <th class="px-4 py-3"></th>
                         </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -32,8 +32,18 @@
                                 <td class="px-4 py-3 text-sm">{{ $ad->city->name }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->active }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->moderated }}</td>
-                                <td class="px-4 py-3 text-sm"></td>
-                                <td class="px-4 py-3 text-sm"></td>
+                                <td class="px-4 py-3 text-xs">
+                                    <a href="{{ route('dashboard.ads.edit', $ad) }}">
+                                    <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> View </span>
+                                    </a>
+                                </td>
+                                <td class="px-4 py-3 text-xs">
+                                    <form action="{{ route('dashboard.ads.destroy', $ad) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700"> Delete </button>
+                                    </form>
+                                </td>
 
                             </tr>
                         @endforeach

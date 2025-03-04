@@ -50,7 +50,7 @@ class AdController extends Controller
         if (isset($data['image'])) {
             $data['image'] = Storage::put('/images', $data['image']);
         }
-        $data['moderated'] = 0;
+        //$data['moderated'] = 0;
         $data['user_id'] = Auth::user()->id;
 
         Ad::create($data);
@@ -79,6 +79,8 @@ class AdController extends Controller
      */
     public function destroy(Ad $ad)
     {
-        //
+        $ad->delete();
+
+        return redirect()->route('dashboard.ads.index');
     }
 }

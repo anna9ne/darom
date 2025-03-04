@@ -24,15 +24,15 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     //Route::get('/cities/{id}', [CityController::class, 'show'])->name('dashboard.cities.show');
     //Route::get('/cities/edit/{id}', [CityController::class, 'edit'])->name('dashboard.cities.edit');
     //Route::put('/cities/update/{id}', [CityController::class, 'update'])->name('dashboard.cities.update');
-    Route::delete('/cities/delete/{id}', [CityController::class, 'destroy'])->name('dashboard.cities.destroy');
+    Route::delete('/cities/delete/{city}', [CityController::class, 'destroy'])->name('dashboard.cities.destroy');
 
     Route::get('/ads', [AdController::class, 'index'])->name('dashboard.ads.index');
     Route::get('/ads/create', [AdController::class, 'create'])->name('dashboard.ads.create');
     Route::post('/ads/store', [AdController::class, 'store'])->name('dashboard.ads.store');
     //Route::get('/ads/{id}', [AdController::class, 'show'])->name('dashboard.ads.show');
-    Route::get('/ads/edit/{id}', [AdController::class, 'edit'])->name('dashboard.ads.edit');
-    Route::put('/ads/update/{id}', [AdController::class, 'update'])->name('dashboard.ads.update');
-    Route::delete('/ads/delete/{id}', [AdController::class, 'destroy'])->name('dashboard.ads.destroy');
+    Route::get('/ads/edit/{ad}', [AdController::class, 'edit'])->name('dashboard.ads.edit');
+    Route::put('/ads/update/{ad}', [AdController::class, 'update'])->name('dashboard.ads.update');
+    Route::delete('/ads/delete/{ad}', [AdController::class, 'destroy'])->name('dashboard.ads.destroy');
 });
 
 Route::middleware('auth')->group(function () {
