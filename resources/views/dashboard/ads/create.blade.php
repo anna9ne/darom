@@ -71,7 +71,9 @@
                            class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" >
                         <option value="">Select city</option>
                         @foreach($cities as $city)
-                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            <option
+                                {{ old('city_id') == $city->id ? ' selected ' : '' }}
+                                value="{{ $city->id }}">{{ $city->name }}</option>
                         @endforeach
                     </select>
                     @error('city_id')

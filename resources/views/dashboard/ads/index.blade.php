@@ -12,6 +12,7 @@
                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                             <th class="px-4 py-3">Id</th>
                             <th class="px-4 py-3">Title</th>
+                            <th class="px-4 py-3">Slug</th>
                             <th class="px-4 py-3">Created</th>
                             <th class="px-4 py-3">User</th>
                             <th class="px-4 py-3">City</th>
@@ -27,6 +28,7 @@
                             <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm">{{ $ad->id }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->title }}</td>
+                                <td class="px-4 py-3 text-sm">{{ $ad->slug }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->created_at }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->user_id }}</td>
                                 <td class="px-4 py-3 text-sm">{{ $ad->city->name }}</td>
@@ -51,6 +53,8 @@
                         </tbody>
                     </table>
                 </div>
+
+                {{ $ads->links() }}
 
                 <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
                     <span class="flex items-center col-span-3"> Showing 21-30 of 100 </span>
