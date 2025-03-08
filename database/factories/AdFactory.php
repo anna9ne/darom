@@ -20,7 +20,7 @@ class AdFactory extends Factory
             'title' => fake()->sentence,
             'slug' => fake()->slug(),
             'description' => fake()->realText(500),
-            'image' => fake()->imageUrl,
+            'image' => 'images/1.png',
             'phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             'active' => fake()->boolean(),

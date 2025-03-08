@@ -17,7 +17,7 @@
                     @enderror
                 </div>
 
-                <div class="flex flex-col mt-2">
+{{--                <div class="flex flex-col mt-2">
                     <label for="slug" class="hidden">Slug</label>
                     <input type="text" name="slug" id="slug" placeholder="Slug"
                            value="{{ old('slug') }}"
@@ -25,7 +25,7 @@
                     @error('slug')
                         <div class="text-red-500 text-xs">{{ $message }}</div>
                     @enderror
-                </div>
+                </div>--}}
 
                 <div class="flex flex-col mt-2">
                     <label for="description" class="hidden">Description</label>

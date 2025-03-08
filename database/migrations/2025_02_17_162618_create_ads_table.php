@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->text('description');
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default('images/1.png');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->boolean('active')->default(false);

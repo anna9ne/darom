@@ -37,7 +37,7 @@
 
                 <div class="flex flex-col mt-2">
                     <label for="image">Image</label>
-                    <img class="w-8 h-8" src="{{'/storage/' . $ad->image}}" alt="">
+                    <img class="w-16 h-16" src="{{'/storage/' . $ad->image}}" alt="">
                     <input type="file" name="image" id="image"
                            class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
                     @error('image')

@@ -1,17 +1,22 @@
 <?php
 
-use App\Http\Controllers\AdController;
-use App\Http\Controllers\CityController;
+use App\Http\Controllers\Dashboard\AdController;
+use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');*/
+
+Route::get('/', [SiteController::class, 'getCities'])->name('home');
+Route::get('/{city:name}', [SiteController::class, 'getAdsByCity'])->name('ads-by-city');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/', function () {
@@ -29,7 +34,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::get('/ads', [AdController::class, 'index'])->name('dashboard.ads.index');
     Route::get('/ads/create', [AdController::class, 'create'])->name('dashboard.ads.create');
     Route::post('/ads/store', [AdController::class, 'store'])->name('dashboard.ads.store');
-    //Route::get('/ads/{id}', [AdController::class, 'show'])->name('dashboard.ads.show');
+    Route::get('/ads/{ad}', [AdController::class, 'show'])->name('dashboard.ads.show');
     Route::get('/ads/edit/{ad}', [AdController::class, 'edit'])->name('dashboard.ads.edit');
     Route::put('/ads/update/{ad}', [AdController::class, 'update'])->name('dashboard.ads.update');
     Route::delete('/ads/delete/{ad}', [AdController::class, 'destroy'])->name('dashboard.ads.destroy');

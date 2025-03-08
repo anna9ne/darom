@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Ad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AdController extends Controller
 {
@@ -14,7 +16,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ads = Ad::query()->orderBy('id', 'desc')->paginate(5);
+        $ads = Ad::query()->orderBy('id', 'desc')->paginate(20);
 
         return view('dashboard.ads.index', compact('ads'));
     }
@@ -37,7 +39,6 @@ class AdController extends Controller
 
         $data = $request->validate([
             'title' => 'required|max:255',
-            'slug' => 'required|unique:ads|max:255',
             'description' => 'required',
             'image' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:10000',
             'phone' => 'nullable|max:255',
@@ -46,6 +47,7 @@ class AdController extends Controller
             'active' => 'nullable',
         ]);
 
+        $data['slug'] = Str::slug($data['title']) . '-' . time();
         if (isset($data['image'])) {
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         }
@@ -59,6 +61,13 @@ class AdController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(Ad $ad)
+    {
+        return view('dashboard.ads.show', compact('ad'));
+    }
+
+
+
     public function edit(Ad $ad)
     {
         $cities = \App\Models\City::query()->orderBy('name', 'asc')->get();
