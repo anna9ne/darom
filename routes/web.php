@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');*/
 
-Route::get('/', [SiteController::class, 'getCities'])->name('home');
-Route::get('/{city:name}', [SiteController::class, 'getAdsByCity'])->name('ads-by-city');
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/', function () {
@@ -49,3 +47,8 @@ Route::middleware('auth')->group(function () {
 
 
 require __DIR__.'/auth.php';
+
+
+Route::get('/', [SiteController::class, 'getCities'])->name('home');
+Route::get('/{city:slug}', [SiteController::class, 'getAdsByCity'])->name('ads-by-city');
+Route::get('/ads/{ad:slug}', [SiteController::class, 'showAd'])->name('ad');

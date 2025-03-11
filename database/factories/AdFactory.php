@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ad>
@@ -16,9 +17,11 @@ class AdFactory extends Factory
      */
     public function definition(): array
     {
+        $title = fake()->sentence;
+
         return [
-            'title' => fake()->sentence,
-            'slug' => fake()->slug(),
+            'title' => $title,
+            'slug' => Str::slug($title),
             'description' => fake()->realText(500),
             'image' => 'images/1.png',
             'phone' => fake()->phoneNumber(),

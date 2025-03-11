@@ -1,20 +1,33 @@
-<x-template>
-    <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+<x-page-layout>
+    <div class="card card-body shadow-xl mx-3 mx-md-4">
+
         <div class="container">
-            <div class="section text-center">
-                <h2 class="title">Your main section here</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5 h3">Advertisements in {{ $city->name }}</h1>
+                </div>
             </div>
-            <div>
-                <ul class="flex-column ms-n3 nav">
-                    @foreach ($ads as $ad)
-                        <li class="nav-item">
-                            <a class="nav-link" href="#{{--{{ 'cities.index' }}--}}" >
-                                {{ $ads->title }}
+            <div class="row">
+                @foreach ($ads as $ad)
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card card-plain">
+                        <div class="card-header p-0 position-relative">
+                            <a href="{{ route('ad', $ad) }}" class="d-block blur-shadow-image">
+                                <img src="{{'/storage/' . $ad->image}}" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg" loading="lazy">
                             </a>
-                        </li>
-                    @endforeach
-                </ul>
+                        </div>
+                        <div class="card-body px-0">
+                            <h5>
+                                <a href="{{ route('ad', $ad) }}" class="text-dark font-weight-bold">{{ $ad->title }}</a>
+                            </h5>
+                            {{--<p>{{ $ad->created_at }}</p>--}}
+                            <a href="{{ route('ad', $ad) }}" class="text-info text-sm icon-move-right">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
+
         </div>
     </div>
-</x-template>
+</x-page-layout>
