@@ -1,3 +1,44 @@
-<div>
-    city edit
-</div>
+<x-app-layout>
+
+    <!-- Form -->
+    <div class="mt-8 mx-4">
+        <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight pt-8">Edit City {{ $city->id }}</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2">
+
+            <form action="{{ route('dashboard.cities.update', $city) }}" method="POST" enctype="multipart/form-data" class="p-6 flex flex-col justify-center">
+                @csrf
+                @method('PUT')
+                <div class="flex flex-col mt-2">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Name"
+                           value="{{ old('name') ?: $city->name }}"
+                           class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+                    @error('name')
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="flex flex-col mt-2">
+                    <label for="slug">Slug</label>
+                    <input type="text" name="slug" id="slug" placeholder="Slug"
+                           value="{{ old('slug') ?: $city->slug }}"
+                           class="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+                    @error('slug')
+                    <div class="text-red-500 text-xs">{{ $message }}</div>
+                    @enderror
+                </div>
+
+
+                <div class="grid grid-cols-2 mt-4">
+                    <a href="{{ route('dashboard.cities.index') }}" class="md:w-32 bg-white dark:bg-gray-100 text-blue-600 border-2 border-blue-600 dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-200 dark:hover:bg-gray-200 transition ease-in-out duration-300 text-center">Cancel</a>
+
+                    <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- ./ Form -->
+
+</x-app-layout>
+
+

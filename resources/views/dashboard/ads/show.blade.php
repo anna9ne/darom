@@ -1,4 +1,7 @@
 <x-app-layout>
+    <div class="mt-4 mx-4">
+        <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight pt-8">Advertisement {{ $ad->id }}</h1>
+    </div>
     <div class="grid grid-cols-1 p-4 gap-4">
 
         <div class="relative flex flex-col min-w-0 mb-4 lg:mb-0 break-words bg-gray-50 dark:bg-gray-800 w-full shadow-lg rounded">

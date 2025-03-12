@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdController;
 use App\Http\Controllers\Dashboard\CityController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -17,15 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/cities', [CityController::class, 'index'])->name('dashboard.cities.index');
     Route::get('/cities/create', [CityController::class, 'create'])->name('dashboard.cities.create');
     Route::post('/cities/store', [CityController::class, 'store'])->name('dashboard.cities.store');
     //Route::get('/cities/{id}', [CityController::class, 'show'])->name('dashboard.cities.show');
-    //Route::get('/cities/edit/{id}', [CityController::class, 'edit'])->name('dashboard.cities.edit');
+    Route::get('/cities/edit/{city}', [CityController::class, 'edit'])->name('dashboard.cities.edit');
     //Route::put('/cities/update/{id}', [CityController::class, 'update'])->name('dashboard.cities.update');
     Route::delete('/cities/delete/{city}', [CityController::class, 'destroy'])->name('dashboard.cities.destroy');
 

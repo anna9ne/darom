@@ -2,6 +2,7 @@
 
     <!-- Form -->
     <div class="mt-8 mx-4">
+        <h1 class="text-4xl sm:text-5xl text-gray-800 dark:text-white font-extrabold tracking-tight pt-8">Edit Advertisement {{ $ad->id }}</h1>
         <div class="grid grid-cols-1 md:grid-cols-2">
 
             <form action="{{ route('dashboard.ads.update', $ad) }}" method="POST" enctype="multipart/form-data" class="p-6 flex flex-col justify-center">

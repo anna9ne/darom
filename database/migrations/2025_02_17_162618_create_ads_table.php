@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->boolean('active')->default(false);
             $table->boolean('moderated')->default(false);
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('city_id')->constrained('cities');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
             $table->timestamps();
         });
     }

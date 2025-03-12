@@ -53,7 +53,7 @@ class AdController extends Controller
         }
         $data['user_id'] = Auth::user()->id;
 
-        Ad::firstOrCreate($data);
+        Ad::create($data);
 
         return redirect()->route('dashboard.ads.index');
     }
@@ -95,7 +95,7 @@ class AdController extends Controller
         }
         $ad->update($data);
 
-        return redirect()->route('dashboard.ads.index');
+        return redirect()->route('dashboard.ads.show', $ad);
     }
 
     /**

@@ -16,7 +16,12 @@ class SiteController extends Controller
 
     public function getAdsByCity(City $city)
     {
-        $ads = Ad::query()->where('city_id', '=', $city->id)->orderBy('id', 'desc')->get();
+        $ads = Ad::query()
+            ->where('city_id', '=', $city->id)
+            ->where('active', '=', 1)
+            ->where('moderated', '=', 1)
+            ->orderBy('id', 'desc')
+            ->get();
         return view('site.ads', compact('ads', 'city'));
     }
 

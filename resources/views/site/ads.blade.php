@@ -9,7 +9,7 @@
             </div>
             <div class="row">
                 @foreach ($ads as $ad)
-                <div class="col-lg-3 col-sm-6">
+                <div class="col-lg-3 col-sm-6 mb-3">
                     <div class="card card-plain">
                         <div class="card-header p-0 position-relative">
                             <a href="{{ route('ad', $ad) }}" class="d-block blur-shadow-image">

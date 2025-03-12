@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CityController extends Controller
 {
@@ -13,7 +14,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $cities = City::query()->orderBy('id', 'desc')->get();
         return view('dashboard.cities.index', compact('cities'));
     }
 
@@ -33,18 +34,11 @@ class CityController extends Controller
         $data = $request->validate([
             'name' => 'required|unique:cities',
         ]);
+        $data['slug'] = Str::slug($data['name']);
 
-        City::create($data);
+        City::firstOrCreate($data);
 
         return redirect()->route('dashboard.cities.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(City $city)
-    {
-        return view('dashboard.cities.show', compact('city'));
     }
 
     /**
@@ -60,7 +54,13 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'slug' => 'required',
+        ]);
+        $city->update($data);
+
+        return redirect()->route('dashboard.cities.show', $city);
     }
 
     /**
@@ -68,6 +68,8 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+
+        return redirect()->route('dashboard.cities.index');
     }
 }

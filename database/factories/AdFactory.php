@@ -26,8 +26,10 @@ class AdFactory extends Factory
             'image' => 'images/1.png',
             'phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
-            'active' => fake()->boolean(),
-            'moderated' => fake()->boolean(),
+            //'active' => fake()->boolean(),
+            //'moderated' => fake()->boolean(),
+            'active' => 1,
+            'moderated' => 1,
             'user_id' => fake()->numberBetween(1, 11),
             'city_id' => fake()->numberBetween(1, 20),
         ];
