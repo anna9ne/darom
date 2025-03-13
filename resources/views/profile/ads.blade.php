@@ -1,10 +1,10 @@
-<x-page-layout>
+<x-app-layout>
     <div class="card card-body shadow-xl mx-3 mx-md-4">
 
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1 class="mb-5 h3">Advertisements in {{ $city->name }}</h1>
+                    <h1 class="mb-5 h3">Advertisements</h1>
                 </div>
             </div>
             <div class="row">
@@ -32,4 +32,4 @@
 
         </div>
     </div>
-</x-page-layout>
+</x-app-layout>

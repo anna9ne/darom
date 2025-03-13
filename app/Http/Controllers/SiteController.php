@@ -21,7 +21,7 @@ class SiteController extends Controller
             ->where('active', '=', 1)
             ->where('moderated', '=', 1)
             ->orderBy('id', 'desc')
-            ->get();
+            ->paginate(20);
         return view('site.ads', compact('ads', 'city'));
     }
 

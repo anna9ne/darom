@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AdController;
 use App\Http\Controllers\Dashboard\CityController;
+use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
@@ -21,12 +22,19 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
+    Route::get('/users', [UserController::class, 'index'])->name('dashboard.users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('dashboard.users.create');
+    Route::post('/users/store', [UserController::class, 'store'])->name('dashboard.users.store');
+    Route::get('/users/edit/{user}', [UserController::class, 'edit'])->name('dashboard.users.edit');
+    Route::put('/users/update/{user}', [UserController::class, 'update'])->name('dashboard.users.update');
+    Route::delete('/users/delete/{user}', [UserController::class, 'destroy'])->name('dashboard.users.destroy');
+
     Route::get('/cities', [CityController::class, 'index'])->name('dashboard.cities.index');
     Route::get('/cities/create', [CityController::class, 'create'])->name('dashboard.cities.create');
     Route::post('/cities/store', [CityController::class, 'store'])->name('dashboard.cities.store');
     //Route::get('/cities/{id}', [CityController::class, 'show'])->name('dashboard.cities.show');
     Route::get('/cities/edit/{city}', [CityController::class, 'edit'])->name('dashboard.cities.edit');
-    //Route::put('/cities/update/{id}', [CityController::class, 'update'])->name('dashboard.cities.update');
+    Route::put('/cities/update/{city}', [CityController::class, 'update'])->name('dashboard.cities.update');
     Route::delete('/cities/delete/{city}', [CityController::class, 'destroy'])->name('dashboard.cities.destroy');
 
     Route::get('/ads', [AdController::class, 'index'])->name('dashboard.ads.index');
@@ -42,9 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile/ads', [ProfileController::class, 'getAds'])->name('profile.ads');
 });
-
-
 
 require __DIR__.'/auth.php';
 
