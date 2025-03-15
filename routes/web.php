@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SiteController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 })->middleware(['auth', 'verified'])->name('dashboard');*/
 
 
-Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
+Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('dashboard')->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
