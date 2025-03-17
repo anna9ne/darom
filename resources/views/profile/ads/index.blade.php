@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-profile-layout>
     <div class="card card-body shadow-xl mx-3 mx-md-4">
 
         <div class="container">
@@ -21,7 +21,8 @@
                                 <a href="{{ route('ad', $ad) }}" class="text-dark font-weight-bold">{{ $ad->title }}</a>
                             </h5>
                             {{--<p>{{ $ad->created_at }}</p>--}}
-                            <a href="{{ route('ad', $ad) }}" class="text-info text-sm icon-move-right">Read More</a>
+                            <a href="{{ route('ad', $ad) }}" class="block text-info text-sm icon-move-right">Show</a>
+                            <a href="{{ route('profile.ads.edit', $ad) }}" class="block text-sm icon-move-right text-red-500">Edit</a>
                         </div>
                     </div>
                 </div>
@@ -32,4 +33,4 @@
 
         </div>
     </div>
-</x-app-layout>
+</x-profile-layout>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AdController;
+use App\Http\Controllers\Profile\AdController as ProfileAdController;
 use App\Http\Controllers\Dashboard\CityController;
 use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\DashboardController;
@@ -51,7 +52,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/profile/ads', [ProfileController::class, 'getAds'])->name('profile.ads');
+
+    Route::get('/profile/ads', [ProfileAdController::class, 'getAds'])->name('profile.ads.index');
+    Route::get('/profile/ads/edit/{ad}', [ProfileAdController::class, 'edit'])->name('profile.ads.edit');
+    Route::put('/profile/ads/update/{ad}', [ProfileAdController::class, 'update'])->name('profile.ads.update');
+    Route::delete('/profile/ads/delete/{ad}', [ProfileAdController::class, 'destroy'])->name('profile.ads.destroy');
 });
 
 require __DIR__.'/auth.php';
