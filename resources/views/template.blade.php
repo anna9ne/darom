@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="Give away things and services for free! Join our friendly community to find or offer something useful completely free of charge.">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Free Stuff') }}</title>
+        {{--<title>Free Stuff</title>--}}
         @include('site.partials.favicon')
 
         <!-- Fonts -->
@@ -21,7 +23,7 @@
         {{--<link href="assets/css/material-kit.css?v=3.0.0" rel="stylesheet" />--}}
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/css/material-kit.css'])
+        @vite(['resources/css/app.css', 'resources/css/material-kit.css', 'resources/js/app.js'])
         {{--@vite(['resources/css/app.css', 'resources/js/app.js'])--}}
     </head>
     <body>
@@ -31,14 +33,14 @@
     <div class="page-header min-vh-80 mt-n7" style="background-image: url('https://images.unsplash.com/photo-1630752708689-02c8636b9141?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2490&q=80')">
         <span class="mask bg-gradient-dark opacity-6"></span>
         <div class="container">
-{{--            <div class="row">--}}
-{{--                <div class="col-md-8 mx-auto">--}}
+            <div class="row">
+                <div class="col-md-8 mx-auto">
                     <div class="text-center">
                         <h1 class="text-white">Free Stuff</h1>
                         <h3 class="text-white">Find Amazing Free Offers Near You!</h3>
                     </div>
-{{--                </div>--}}
-{{--            </div>--}}
+                </div>
+            </div>
         </div>
     </div>
 

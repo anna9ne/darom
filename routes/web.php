@@ -34,7 +34,6 @@ Route::middleware(['auth', 'verified', AdminMiddleware::class])->prefix('dashboa
     Route::get('/cities', [CityController::class, 'index'])->name('dashboard.cities.index');
     Route::get('/cities/create', [CityController::class, 'create'])->name('dashboard.cities.create');
     Route::post('/cities/store', [CityController::class, 'store'])->name('dashboard.cities.store');
-    //Route::get('/cities/{id}', [CityController::class, 'show'])->name('dashboard.cities.show');
     Route::get('/cities/edit/{city}', [CityController::class, 'edit'])->name('dashboard.cities.edit');
     Route::put('/cities/update/{city}', [CityController::class, 'update'])->name('dashboard.cities.update');
     Route::delete('/cities/delete/{city}', [CityController::class, 'destroy'])->name('dashboard.cities.destroy');
@@ -53,7 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/profile/ads', [ProfileAdController::class, 'getAds'])->name('profile.ads.index');
+    Route::get('/profile/ads', [ProfileAdController::class, 'index'])->name('profile.ads.index');
+    Route::get('/profile/ads/create', [ProfileAdController::class, 'create'])->name('profile.ads.create');
+    Route::post('/profile/ads/store', [ProfileAdController::class, 'store'])->name('profile.ads.store');
     Route::get('/profile/ads/edit/{ad}', [ProfileAdController::class, 'edit'])->name('profile.ads.edit');
     Route::put('/profile/ads/update/{ad}', [ProfileAdController::class, 'update'])->name('profile.ads.update');
     Route::delete('/profile/ads/delete/{ad}', [ProfileAdController::class, 'destroy'])->name('profile.ads.destroy');

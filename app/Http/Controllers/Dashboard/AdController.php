@@ -48,10 +48,14 @@ class AdController extends Controller
         ]);
 
         $data['slug'] = Str::slug($data['title']) . '-' . time();
+
         if (isset($data['image'])) {
             $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         }
+
         $data['user_id'] = Auth::user()->id;
+
+        $data['moderated'] = 1;
 
         Ad::create($data);
 
@@ -91,7 +95,7 @@ class AdController extends Controller
         ]);
 
         if (isset($data['image'])) {
-            $data['image'] = Storage::put('/images', $data['image']);
+            $data['image'] = Storage::disk('public')->put('/images', $data['image']);
         }
         $ad->update($data);
 

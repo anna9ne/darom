@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Give away things and services for free! Join our friendly community to find or offer something useful completely free of charge.">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
     @include('site.partials.favicon')

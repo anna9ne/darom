@@ -70,7 +70,6 @@
                                 <td class="border-t-0 px-4 align-middle border-l-0 border-r-0 text-xs p-4">{{ $ad->updated_at }}</td>
                             </tr>
 
-
                         </tbody>
                     </table>
                 </div>
@@ -78,5 +77,19 @@
         </div>
         <!-- ./Social Traffic -->
 
+    </div>
+
+    <div class="grid grid-cols-3 mt-4 mx-4">
+        <a href="{{ route('dashboard.ads.index') }}" class="md:w-32 bg-white dark:bg-gray-100 text-blue-600 border-2 border-blue-600 dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-200 dark:hover:bg-gray-200 transition ease-in-out duration-300 text-center">Back</a>
+
+        <a href="{{ route('dashboard.ads.edit', $ad) }}" class="md:w-32 bg-white dark:bg-gray-100 text-blue-600 border-2 border-blue-600 dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-200 dark:hover:bg-gray-200 transition ease-in-out duration-300 text-center">Edit</a>
+
+        <form action="{{ route('dashboard.ads.destroy', $ad) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300"> Delete </button>
+        </form>
+
+{{--        <button type="submit" class="md:w-32 bg-blue-600 dark:bg-gray-100 text-white dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 hover:bg-blue-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>--}}
     </div>
 </x-app-layout>

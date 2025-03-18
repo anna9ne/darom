@@ -21,7 +21,7 @@
                                     <p class="mb-4">
                                         {{ $ad->description }}
                                     </p>
-                                    <div class="row">
+                                    <div class="row mb-4">
                                         <h6>Contacts:</h6>
                                         @if ($ad->phone)
                                             <p>{{ $ad->phone }}</p>
@@ -29,6 +29,11 @@
                                         @if ($ad->email)
                                             <p>{{ $ad->email }}</p>
                                         @endif
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('ads-by-city', $ad->city) }}">
+                                            &#8592; {{ $ad->city->name }}
+                                        </a>
                                     </div>
                                 </div>
                             </div>
