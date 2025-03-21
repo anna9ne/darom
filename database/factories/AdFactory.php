@@ -23,7 +23,7 @@ class AdFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => fake()->realText(500),
-            'image' => 'images/1.png',
+            'image' => '1.png',
             'phone' => fake()->phoneNumber(),
             'email' => fake()->email(),
             //'active' => fake()->boolean(),
